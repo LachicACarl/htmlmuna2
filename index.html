@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WURI | University Ranking DSS</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="#dashboard">
+      <span class="brand-icon">W</span>
+      <span><strong>WURI</strong><small>Ranking Intelligence</small></span>
+    </a>
+    <div class="nav-label">WORKSPACE</div>
+    <nav>
+      <a class="nav-link active" href="#dashboard"><span>▦</span> Dashboard</a>
+      <a class="nav-link" href="#institutions"><span>▤</span> Institutions</a>
+      <a class="nav-link" href="#rankings"><span>↕</span> Rankings</a>
+      <a class="nav-link" href="#frameworks"><span>◈</span> Frameworks</a>
+      <a class="nav-link" href="#evidence"><span>▧</span> Evidence Library</a>
+      <a class="nav-link" href="#analytics"><span>▥</span> Analytics</a>
+      <a class="nav-link" href="#research"><span>⌘</span> Research &amp; Validation</a>
+    </nav>
+    <div class="sidebar-bottom">
+      <div class="status-dot"></div>
+      <div><strong>University Ranking DSS</strong><small>Institutional workspace</small></div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <button class="mobile-menu" id="menuToggle" aria-label="Toggle navigation">☰</button>
+      <div class="breadcrumbs">Workspace <span>/</span> <strong id="pageName">Dashboard</strong></div>
+      <div class="top-actions"><span class="avatar">W</span></div>
+    </header>
+
+    <div class="content">
+      <section class="page-section" id="dashboard">
+        <div class="welcome-row">
+          <div><div class="eyebrow">UNIVERSITY RANKING INTELLIGENCE</div><h1>Dashboard Overview</h1>
+          <p class="muted">Institutional performance, ranking readiness, and evidence management.</p></div>
+          <button class="btn btn-primary" data-go="institutions">Manage institutions →</button>
+        </div>
+
+        <div class="stats-grid">
+          <article class="stat-card"><div class="stat-heading">Institutions <span>▤</span></div><div class="stat-number" id="institutionCount">—</div><div class="stat-caption">Awaiting connected data</div></article>
+          <article class="stat-card"><div class="stat-heading">Frameworks <span>◈</span></div><div class="stat-number" id="frameworkCount">—</div><div class="stat-caption">Awaiting connected data</div></article>
+          <article class="stat-card"><div class="stat-heading">Evidence records <span>▧</span></div><div class="stat-number" id="evidenceCount">—</div><div class="stat-caption">Awaiting connected data</div></article>
+          <article class="stat-card"><div class="stat-heading">Readiness <span>◷</span></div><div class="stat-number" id="readinessValue">—</div><div class="stat-caption">Not calculated</div></article>
+        </div>
+
+        <div class="dashboard-grid">
+          <article class="panel"><div class="panel-header"><div><h2>Ranking Overview</h2><p class="muted">Institutional ranking results</p></div><a href="#rankings" class="text-link">View rankings →</a></div>
+            <div id="rankingChart" class="empty-state">Ranking data is not available.</div>
+          </article>
+          <article class="panel"><div class="panel-header"><div><h2>Frameworks</h2><p class="muted">Ranking evaluation frameworks</p></div><a href="#frameworks" class="text-link">View frameworks →</a></div>
+            <div id="frameworkSummary" class="empty-state">Framework data is not available.</div>
+          </article>
+        </div>
+
+        <article class="panel table-panel">
+          <div class="panel-header"><div><h2>Institutional Performance</h2><p class="muted">Ranking results from the connected system</p></div></div>
+          <div class="table-wrap"><table><thead><tr><th>Institution</th><th>Framework</th><th>Score</th><th>Status</th><th>Rank</th></tr></thead><tbody id="dashboardRows"><tr><td colspan="5">No institutional records available.</td></tr></tbody></table></div>
+        </article>
+      </section>
+
+      <section class="page-section hidden" id="institutions">
+        <div class="welcome-row"><div><div class="eyebrow">INSTITUTION DIRECTORY</div><h1>Institutions</h1><p class="muted">Institutional records from the connected system.</p></div></div>
+        <article class="panel">
+          <div class="toolbar"><input id="institutionSearch" type="search" placeholder="Search institutions..." aria-label="Search institutions"><select id="frameworkFilter" aria-label="Filter by framework"><option value="">All frameworks</option></select></div>
+          <div class="table-wrap"><table><thead><tr><th>Institution</th><th>Framework</th><th>Score</th><th>Status</th><th>Rank</th></tr></thead><tbody id="institutionRows"><tr><td colspan="5">No institutional records available.</td></tr></tbody></table></div>
+          <p class="muted table-footer" id="resultCount">No records loaded.</p>
+        </article>
+      </section>
+
+      <section class="page-section hidden" id="rankings">
+        <div class="eyebrow">PERFORMANCE ANALYSIS</div><h1>Rankings</h1><p class="muted">Ranking results calculated from institutional evidence.</p>
+        <article class="panel"><h2>Ranking comparison</h2><div id="fullRankingChart" class="empty-state">Ranking results are not available.</div></article>
+      </section>
+
+      <section class="page-section hidden" id="frameworks">
+        <div class="eyebrow">EVALUATION MODELS</div><h1>Frameworks</h1><p class="muted">Framework definitions from the connected system.</p>
+        <article class="panel"><div id="frameworkList" class="empty-state">No framework records available.</div></article>
+      </section>
+
+      <section class="page-section hidden" id="evidence">
+        <div class="eyebrow">DOCUMENTATION</div><h1>Evidence Library</h1><p class="muted">Institutional evidence and supporting documentation.</p>
+        <article class="panel"><h2>Evidence records</h2><div id="evidenceList" class="empty-state">No evidence records loaded. Connect the evidence API to view persisted records.</div></article>
+      </section>
+
+      <section class="page-section hidden" id="analytics">
+        <div class="eyebrow">DATA INSIGHTS</div><h1>Analytics</h1><p class="muted">Institutional performance indicators and ranking analysis.</p>
+        <div class="stats-grid"><article class="stat-card"><div class="stat-heading">Average score</div><div class="stat-number">—</div><div class="stat-caption">Not calculated</div></article><article class="stat-card"><div class="stat-heading">Highest score</div><div class="stat-number">—</div><div class="stat-caption">Not available</div></article><article class="stat-card"><div class="stat-heading">Lowest score</div><div class="stat-number">—</div><div class="stat-caption">Not available</div></article><article class="stat-card"><div class="stat-heading">Records</div><div class="stat-number">—</div><div class="stat-caption">Not loaded</div></article></div>
+        <article class="panel"><h2>Score comparison</h2><div id="analyticsChart" class="empty-state">Analytics require actual ranking data.</div></article>
+      </section>
+
+      <section class="page-section hidden" id="research">
+        <div class="eyebrow">RESEARCH WORKSPACE</div><h1>Research &amp; Validation</h1><p class="muted">Research datasets, validation, and experiment results.</p>
+        <div class="dashboard-grid"><article class="panel"><h2>Dataset management</h2><p class="muted">Dataset records require the research API.</p></article><article class="panel"><h2>Validation experiments</h2><p class="muted">Experiment execution requires the research API.</p></article></div>
+      </section>
+
+      <footer>WURI University Ranking Decision Support System</footer>
+    </div>
+  </main>
+</body>
+</html>
