@@ -1,108 +1,478 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>WURI | University Ranking DSS</title>
-  <link rel="stylesheet" href="styles.css">
-  <script src="script.js" defer></script>
+  <meta name="theme-color" content="#10172a">
+  <title>Ranking DSS | Submission Dashboard</title>
+  <style>
+:root{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#10172a;background:#f7f8fa;font-synthesis:none;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;--navy:#10172a;--muted:#718096;--muted-strong:#8998ae;--border:#e3e6eb;--surface:#fff;--bg:#f7f8fa;--orange:#d97706;--blue:#2563eb;--green:#059669}
+*{box-sizing:border-box}html{min-width:320px;scroll-behavior:smooth}body{margin:0;min-height:100vh;background:var(--bg)}button,input,select,textarea{font:inherit}button,a{-webkit-tap-highlight-color:transparent}button{cursor:pointer}a{color:inherit;text-decoration:none}.sidebar{position:fixed;inset:0 auto 0 0;width:348px;display:flex;flex-direction:column;background:#fff;border-right:1px solid #dfe3e8;z-index:20}.brand{height:94px;display:flex;align-items:center;gap:14px;padding:0 27px;border-bottom:1px solid #edf0f3;flex:none}.brand-icon{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;background:var(--navy);color:#fff;flex:none}.brand-icon svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.brand strong,.brand small{display:block}.brand strong{font-size:19px;font-weight:800;letter-spacing:-.5px}.brand small{font-size:13px;color:#8997ab;margin-top:3px;white-space:nowrap}.nav-scroll{overflow-y:auto;padding:16px 14px 20px;flex:1}.nav-label{padding:0 17px;margin:0 0 13px;color:#8b9ab0;font-size:13px;font-weight:800}.nav-link{width:100%;min-height:51px;display:flex;align-items:center;gap:15px;padding:0 16px;margin:0 0 2px;border:1px solid transparent;border-radius:12px;color:#405064;background:transparent;text-align:left;font-size:16px;font-weight:500;transition:background .15s,color .15s,border-color .15s}.nav-link:hover{background:#f4f6f9}.nav-link.active{background:var(--navy);color:#fff;border-color:#080d19;box-shadow:0 1px 2px #10172a1a;font-weight:650}.nav-icon{display:inline-flex;align-items:center;justify-content:center;width:22px;flex:none;font-size:23px;line-height:1;color:inherit}.governance-label{margin-top:30px}.sidebar-bottom{border-top:1px solid #edf0f3;padding:17px 14px 18px;flex:none}.signout{margin:0;color:#536174}.main{margin-left:348px;min-height:100vh;padding:0 14px 0 0}.page{display:none;max-width:1900px;margin:0 auto;padding:0 0 0 0}.page.active-page{display:block}.dashboard-hero{min-height:158px;padding:27px 29px;display:flex;align-items:center;justify-content:space-between;gap:24px;background:#fff;border:1px solid var(--border);border-radius:0 0 20px 20px;box-shadow:0 1px 2px #10172a0a}.eyebrow{color:#8a9ab0;font-size:13px;font-weight:800;letter-spacing:1.6px;margin-bottom:9px}.dashboard-hero h1,.page-intro h1{font-size:35px;line-height:1.18;letter-spacing:-1.1px;font-weight:850;margin:0}.dashboard-hero p,.page-intro p,.card-heading p{color:var(--muted);font-size:16px;line-height:1.5;margin:11px 0 0}.button{min-height:48px;display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid transparent;border-radius:13px;padding:0 21px;font-size:15px;font-weight:600;white-space:nowrap;transition:transform .12s,background .12s,border-color .12s}.button:active{transform:translateY(1px)}.button-dark{background:#030617;color:#fff}.button-dark:hover{background:#202a40}.button-light{background:#fff;color:#364256;border-color:#dce1e8}.button-light:hover{background:#f8fafc}.button-quiet{background:transparent;color:#526176;padding:0 8px;font-weight:500}.button-quiet:hover{color:#10172a;background:#f6f7f9}.filter-card{margin-top:28px;padding:32px 29px 27px}.card{background:var(--surface);border:1px solid var(--border);border-radius:20px;box-shadow:0 1px 2px #10172a0c}.filter-card label,.form-field label{display:block;font-size:15px;font-weight:750;color:#273449;margin-bottom:10px}.filter-card input{display:block;width:min(100%,690px);height:60px;padding:0 20px;border:1px solid #cfd5de;border-radius:14px;background:#fff;font-size:16px;color:#182235;outline:none}.filter-card input:focus,.form-field input:focus,.form-field select:focus,.form-field textarea:focus{border-color:#8795ad;box-shadow:0 0 0 3px #10172a0c}.filter-card input::placeholder,.form-field input::placeholder,.form-field textarea::placeholder{color:#94a0b2}.field-help{font-size:13px;color:var(--muted);margin:10px 0 0;line-height:1.5}.stat-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin-top:28px}.stat-card{min-height:122px;padding:24px}.stat-label{font-size:13px;font-weight:800;letter-spacing:.6px;color:#8a9ab0}.stat-value{font-size:34px;font-weight:850;letter-spacing:-1px;margin-top:12px;color:#050816}.stat-value.orange{color:var(--orange)}.stat-value.blue{color:var(--blue)}.stat-value.green{color:var(--green)}.submissions-card{margin-top:28px;overflow:hidden}.card-heading{min-height:93px;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:23px 29px;border-bottom:1px solid #e7e9ee}.card-heading h2,.form-card h2,.info-card h2{font-size:21px;letter-spacing:-.35px;margin:0;font-weight:800}.card-heading p{font-size:15px;margin-top:7px}.table-scroll{overflow-x:auto}table{border-collapse:collapse;width:100%;text-align:left}thead th{padding:15px 20px;background:#fafbfc;border-bottom:1px solid #e9ecf0;color:#8290a5;font-size:11px;font-weight:800;letter-spacing:.7px;text-transform:uppercase;white-space:nowrap}tbody td{padding:16px 20px;border-bottom:1px solid #edf0f3;color:#435066;font-size:13px;vertical-align:middle}tbody tr:last-child td{border-bottom:0}.table-primary{font-weight:750;color:#172033}.table-secondary{display:block;color:#8995a7;font-size:11px;margin-top:4px}.status{display:inline-flex;align-items:center;padding:6px 10px;border-radius:30px;background:#fff4df;color:#b86b00;font-size:11px;font-weight:800}.status.review{background:#eaf1ff;color:#2458cc}.status.completed{background:#e6f7ef;color:#087d54}.row-action{border:0;background:transparent;color:#536174;font-size:18px;padding:6px 9px;border-radius:7px}.row-action:hover{background:#f0f2f6}.empty-state{min-height:218px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px;text-align:center}.empty-icon{width:43px;height:43px;border-radius:12px;display:grid;place-items:center;background:#f1f3f6;color:#8290a5;font-size:22px;margin-bottom:12px}.empty-state h3{font-size:17px;margin:0;color:#344256}.empty-state p{font-size:15px;color:var(--muted);margin:9px 0 20px}.empty-state .button{min-height:45px}.compact-empty{min-height:160px}.page-intro{padding:21px 38px 27px;border-bottom:1px solid #e2e5eb}.page-intro-top{padding-top:42px}.page-intro h1{font-size:35px}.page-intro p{margin-top:9px}.back-link{display:inline-block;margin:39px 38px 22px;padding:0;border:0;background:transparent;color:#64748b;font-size:16px}.back-link:hover{color:#10172a}.back-link+.page-intro{padding-top:0}.form-card{margin:28px 38px 0;padding:30px}.form-card h2{margin-bottom:29px}.form-field{margin-top:22px}.form-card h2+.form-field{margin-top:0}.form-field input,.form-field select,.form-field textarea{display:block;width:100%;min-height:58px;padding:14px 17px;border:1px solid #cfd5de;border-radius:11px;background:#fff;color:#182235;font-size:16px;outline:none}.form-field textarea{resize:vertical;min-height:120px;line-height:1.55}.form-field select{appearance:auto}.required{color:#c2413b}.section-help{font-size:14px;color:var(--muted);line-height:1.6;margin:-15px 0 22px}.upload-zone{position:relative;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;min-height:165px;padding:24px;border:1.5px dashed #c6ced9;border-radius:13px;background:#fafbfd;color:#536174;text-align:center;cursor:pointer}.upload-zone:hover,.upload-zone:focus-within{border-color:#8b98ac;background:#f7f9fc}.upload-icon{width:38px;height:38px;border-radius:10px;background:#edf0f5;color:#29364a;display:grid;place-items:center;font-size:23px}.upload-zone strong{font-size:14px;color:#273449}.upload-zone span:not(.upload-icon){font-size:12px}.upload-zone input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer}.selected-files{list-style:none;padding:0;margin:14px 0 0}.selected-files li{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 12px;border:1px solid #e7eaf0;border-radius:9px;margin-top:7px;font-size:13px;color:#435066}.file-size{color:#8995a7;white-space:nowrap;font-size:11px}.form-actions{display:flex;justify-content:flex-end;gap:12px;padding:25px 38px 42px}.info-card{margin:28px 38px;padding:30px}.info-card p{font-size:15px;color:var(--muted);line-height:1.7;max-width:850px}.architecture-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin:28px 38px;overflow:hidden}.architecture-grid article{padding:27px;border-right:1px solid #e8ebf0}.architecture-grid article:last-child{border:0}.architecture-number{font-size:12px;font-weight:800;color:#8a9ab0;letter-spacing:1px}.architecture-grid h2{font-size:18px;margin:15px 0 8px}.architecture-grid p{font-size:14px;color:var(--muted);line-height:1.6;margin:0}.checklist{padding:10px 28px}.check-row{display:flex;gap:12px;align-items:flex-start;padding:18px 0;border-bottom:1px solid #edf0f3}.check-row:last-child{border-bottom:0}.check-box{width:22px;height:22px;border:1px solid #cbd3de;border-radius:6px;display:grid;place-items:center;color:#fff;flex:none}.check-box.done{background:#059669;border-color:#059669}.check-row strong{font-size:14px}.check-row p{font-size:12px;color:var(--muted);margin:5px 0 0;line-height:1.5}footer{display:flex;justify-content:space-between;gap:16px;padding:35px 10px 24px;color:#8a95a7;font-size:12px}.mobile-topbar{display:none}.sidebar-scrim{display:none}.toast{position:fixed;right:24px;bottom:24px;z-index:60;max-width:min(420px,calc(100vw - 32px));padding:14px 18px;border-radius:12px;background:#10172a;color:white;font-size:13px;line-height:1.5;box-shadow:0 10px 35px #10172a2b;opacity:0;pointer-events:none;transform:translateY(8px);transition:opacity .18s,transform .18s}.toast.show{opacity:1;transform:translateY(0)}.confirm-dialog{width:min(440px,calc(100vw - 30px));border:1px solid var(--border);border-radius:16px;padding:28px;box-shadow:0 25px 80px #10172a30}.confirm-dialog::backdrop{background:#10172a66}.confirm-dialog h2{margin:0;font-size:20px}.confirm-dialog p{color:var(--muted);font-size:14px;line-height:1.6}.dialog-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:22px}
+@media(min-width:1600px){.page{padding-right:0}.dashboard-hero{padding-left:29px;padding-right:29px}}
+@media(max-width:1250px){.sidebar{width:285px}.main{margin-left:285px}.stat-grid{gap:12px}.stat-card{padding:20px}.dashboard-hero h1,.page-intro h1{font-size:30px}.form-card,.info-card{margin-left:24px;margin-right:24px}.page-intro{padding-left:24px;padding-right:24px}.back-link{margin-left:24px}.form-actions{padding-left:24px;padding-right:24px}.architecture-grid{margin-left:24px;margin-right:24px}}
+@media(max-width:900px){.sidebar{width:280px;transform:translateX(-101%);transition:transform .2s ease;box-shadow:none}.sidebar.open{transform:translateX(0);box-shadow:10px 0 35px #10172a14}.sidebar-scrim.open{display:block;position:fixed;inset:0;background:#10172a55;z-index:19}.main{margin-left:0;padding:0 12px}.mobile-topbar{height:58px;display:flex;align-items:center;gap:14px}.mobile-menu{border:0;background:transparent;font-size:22px;color:#172033}.mobile-brand{font-weight:800}.dashboard-hero{border-radius:16px;min-height:145px}.architecture-grid{grid-template-columns:1fr}.architecture-grid article{border-right:0;border-bottom:1px solid #e8ebf0}.architecture-grid article:last-child{border-bottom:0}}
+@media(max-width:650px){.main{padding:0 8px}.dashboard-hero{align-items:flex-start;flex-direction:column;padding:23px 20px;gap:20px}.dashboard-hero h1,.page-intro h1{font-size:27px}.dashboard-hero p,.page-intro p{font-size:14px}.dashboard-hero .button{width:100%}.filter-card{margin-top:16px;padding:22px 18px}.filter-card input{height:52px;font-size:14px}.stat-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:16px}.stat-card{min-height:105px;padding:17px}.stat-label{font-size:10px;letter-spacing:.3px}.stat-value{font-size:29px}.submissions-card{margin-top:16px}.card-heading{padding:20px 17px;min-height:80px}.card-heading h2{font-size:18px}.card-heading p{font-size:12px}.empty-state{padding:26px 14px}.page-intro-top{padding-top:28px}.page-intro{padding-left:18px;padding-right:18px}.back-link{margin:23px 18px 20px}.form-card,.info-card{margin:16px 0 0;padding:22px 18px;border-radius:15px}.form-card h2{font-size:19px;margin-bottom:23px}.form-field label{font-size:14px}.form-field input,.form-field select,.form-field textarea{font-size:14px;min-height:52px}.form-field textarea{min-height:110px}.form-actions{padding:20px 0 30px}.form-actions .button{flex:1;padding:0 12px}.architecture-grid{margin:16px 0}.checklist{padding:5px 18px}footer{padding:25px 5px 18px;flex-direction:column}thead th,tbody td{padding:13px 14px}.confirm-dialog{padding:22px}.dialog-actions{flex-wrap:wrap}.dialog-actions .button{flex:1}}
+
+  </style>
+  <script defer>
+(() => {
+  "use strict";
+
+  const STORAGE_KEY = "ranking-dss-submissions-v1";
+  const pageIds = [
+    "dashboard", "new-submission", "evidence", "framework-analysis",
+    "xai-support", "rank-history", "architecture", "checklist", "validation-qa"
+  ];
+  const $ = (selector, root = document) => root.querySelector(selector);
+  const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
+  const sidebar = $("#sidebar");
+  const scrim = $("#sidebarScrim");
+  const toast = $("#toast");
+  let toastTimer;
+
+  function readSubmissions() {
+    try {
+      const parsed = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+      return Array.isArray(parsed) ? parsed : [];
+    } catch {
+      return [];
+    }
+  }
+
+  function saveSubmissions(items) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+  }
+
+  function escapeHtml(value) {
+    return String(value ?? "").replace(/[&<>"']/g, char => ({
+      "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+    }[char]));
+  }
+
+  function formatDate(value) {
+    const date = new Date(value);
+    return Number.isNaN(date.getTime()) ? "—" : date.toLocaleDateString(undefined, {
+      year: "numeric", month: "short", day: "numeric"
+    });
+  }
+
+  function formatSize(bytes) {
+    if (bytes < 1024) return `${bytes} B`;
+    if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
+    return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+  }
+
+  function showToast(message) {
+    toast.textContent = message;
+    toast.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove("show"), 3200);
+  }
+
+  function closeSidebar() {
+    sidebar.classList.remove("open");
+    scrim.classList.remove("open");
+  }
+
+  function navigateTo(pageId) {
+    if (!pageIds.includes(pageId)) return;
+    $$(".page").forEach(page => page.classList.toggle("active-page", page.id === `page-${pageId}`));
+    $$(".nav-link[data-page]").forEach(link => link.classList.toggle("active", link.dataset.page === pageId));
+    const activePage = $(`#page-${pageId}`);
+    document.title = `${activePage?.dataset.title || "Dashboard"} | Ranking DSS`;
+    closeSidebar();
+    if (location.hash !== `#${pageId}`) history.replaceState(null, "", `#${pageId}`);
+    renderAll();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  function statusClass(status) {
+    if (status === "Under Review") return "review";
+    if (status === "Completed") return "completed";
+    return "";
+  }
+
+  function statusBadge(status) {
+    return `<span class="status ${statusClass(status)}">${escapeHtml(status)}</span>`;
+  }
+
+  function renderDashboard() {
+    const all = readSubmissions();
+    const query = ($("#schoolSearch").value || "").trim().toLowerCase();
+    const filtered = all.filter(item => !query || item.university.toLowerCase().includes(query));
+    $("#totalCount").textContent = all.length;
+    $("#pendingCount").textContent = all.filter(item => item.status === "Pending").length;
+    $("#reviewCount").textContent = all.filter(item => item.status === "Under Review").length;
+    $("#completedCount").textContent = all.filter(item => item.status === "Completed").length;
+
+    const rows = $("#recentRows");
+    rows.innerHTML = filtered.slice().sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).slice(0, 8).map(item => `
+      <tr>
+        <td><span class="table-primary">${escapeHtml(item.title)}</span><span class="table-secondary">${escapeHtml(item.id)}</span></td>
+        <td>${escapeHtml(item.university)}</td>
+        <td>${formatDate(item.createdAt)}</td>
+        <td>${item.documents.length}</td>
+        <td>${statusBadge(item.status)}</td>
+        <td><button class="row-action" type="button" data-action="view" data-id="${escapeHtml(item.id)}" aria-label="View submission">⋯</button></td>
+      </tr>`).join("");
+
+    const empty = $("#dashboardEmpty");
+    empty.hidden = filtered.length > 0;
+    rows.closest("table").hidden = filtered.length === 0;
+    if (query && filtered.length === 0) {
+      $(".empty-state h3", empty).textContent = "No matching submissions.";
+      $(".empty-state p", empty).textContent = "Try another university name or create a new submission.";
+    } else {
+      $(".empty-state h3", empty).textContent = "No submissions found.";
+      $(".empty-state p", empty).textContent = "Create a new submission to get started.";
+    }
+  }
+
+  function renderHistory() {
+    const items = readSubmissions().slice().sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+    $("#historyRows").innerHTML = items.map(item => `
+      <tr>
+        <td><span class="table-primary">${escapeHtml(item.title)}</span><span class="table-secondary">${escapeHtml(item.id)}</span></td>
+        <td>${escapeHtml(item.university)}</td>
+        <td>${escapeHtml(item.framework || "Not specified")}</td>
+        <td>${formatDate(item.createdAt)}</td>
+        <td>${item.documents.length}</td>
+        <td>${statusBadge(item.status)}</td>
+      </tr>`).join("");
+    $("#historyEmpty").hidden = items.length > 0;
+    if (items.length === 0) {
+      $("#historyEmpty").innerHTML = `<div class="empty-icon">▤</div><h3>No submission history.</h3><p>Submissions created in this browser will appear here.</p><button class="button button-dark" type="button" data-navigate="new-submission">＋ New Submission</button>`;
+    }
+  }
+
+  function renderEvidence() {
+    const items = readSubmissions().filter(item => item.documents.length);
+    const target = $("#evidenceContent");
+    if (!items.length) {
+      target.className = "empty-state compact-empty";
+      target.innerHTML = `<div class="empty-icon">▧</div><h3>No evidence files recorded.</h3><p>Attach supporting documents when creating a submission.</p><button class="button button-dark" type="button" data-navigate="new-submission">＋ New Submission</button>`;
+      return;
+    }
+    target.className = "table-scroll";
+    target.innerHTML = `<table><thead><tr><th>File</th><th>Submission</th><th>University</th><th>Size</th></tr></thead><tbody>${items.flatMap(item => item.documents.map(doc => `<tr><td><span class="table-primary">${escapeHtml(doc.name)}</span></td><td>${escapeHtml(item.title)}</td><td>${escapeHtml(item.university)}</td><td>${escapeHtml(formatSize(doc.size))}</td></tr>`)).join("")}</tbody></table>`;
+  }
+
+  function renderFrameworks() {
+    const items = readSubmissions();
+    const counts = new Map();
+    items.forEach(item => {
+      const key = item.framework || "Not specified";
+      counts.set(key, (counts.get(key) || 0) + 1);
+    });
+    const target = $("#frameworkContent");
+    if (!counts.size) {
+      target.className = "empty-state compact-empty";
+      target.innerHTML = `<div class="empty-icon">▥</div><h3>No framework data yet.</h3><p>Framework selections will appear here after submissions are created.</p>`;
+      return;
+    }
+    target.className = "table-scroll";
+    target.innerHTML = `<table><thead><tr><th>Framework</th><th>Submission count</th></tr></thead><tbody>${Array.from(counts.entries()).map(([name, count]) => `<tr><td class="table-primary">${escapeHtml(name)}</td><td>${count}</td></tr>`).join("")}</tbody></table>`;
+  }
+
+  function renderChecklist() {
+    const items = readSubmissions();
+    const checks = [
+      ["University information", items.some(item => item.university)],
+      ["Submission title", items.some(item => item.title)],
+      ["Framework selected", items.some(item => item.framework)],
+      ["Supporting documents attached", items.some(item => item.documents.length > 0)]
+    ];
+    $("#checklistContent").innerHTML = checks.map(([label, done]) => `<div class="check-row"><span class="check-box ${done ? "done" : ""}">${done ? "✓" : ""}</span><div><strong>${label}</strong><p>${done ? "Present in at least one locally saved submission." : "Not yet recorded in local submissions."}</p></div></div>`).join("");
+  }
+
+  function renderValidation() {
+    const items = readSubmissions();
+    const target = $("#validationContent");
+    if (!items.length) {
+      target.className = "empty-state compact-empty";
+      target.innerHTML = `<div class="empty-icon">⌕</div><h3>Nothing to validate yet.</h3><p>Create a submission to run basic completeness checks.</p>`;
+      return;
+    }
+    target.className = "table-scroll";
+    target.innerHTML = `<table><thead><tr><th>Submission</th><th>University</th><th>Title</th><th>Documents</th><th>Completeness</th></tr></thead><tbody>${items.map(item => {
+      const complete = [item.university, item.title, item.documents.length > 0].filter(Boolean).length;
+      return `<tr><td>${escapeHtml(item.id)}</td><td>${escapeHtml(item.university)}</td><td>${escapeHtml(item.title)}</td><td>${item.documents.length}</td><td>${complete}/3 basic checks</td></tr>`;
+    }).join("")}</tbody></table>`;
+  }
+
+  function renderAll() {
+    renderDashboard();
+    renderHistory();
+    renderEvidence();
+    renderFrameworks();
+    renderChecklist();
+    renderValidation();
+  }
+
+  document.addEventListener("click", event => {
+    const nav = event.target.closest("[data-page]");
+    if (nav) {
+      event.preventDefault();
+      navigateTo(nav.dataset.page);
+      return;
+    }
+    const routeButton = event.target.closest("[data-navigate]");
+    if (routeButton) {
+      navigateTo(routeButton.dataset.navigate);
+      return;
+    }
+    const viewButton = event.target.closest('[data-action="view"]');
+    if (viewButton) {
+      const item = readSubmissions().find(entry => entry.id === viewButton.dataset.id);
+      if (item) showToast(`${item.title} · ${item.university} · ${item.status}`);
+    }
+  });
+
+  $("#menuToggle").addEventListener("click", () => {
+    sidebar.classList.toggle("open");
+    scrim.classList.toggle("open");
+  });
+  scrim.addEventListener("click", closeSidebar);
+  $("#schoolSearch").addEventListener("input", renderDashboard);
+
+  const fileInput = $("#supportingFiles");
+  const selectedFiles = $("#selectedFiles");
+  fileInput.addEventListener("change", () => {
+    const files = Array.from(fileInput.files || []);
+    selectedFiles.innerHTML = files.map(file => `<li><span>${escapeHtml(file.name)}</span><span class="file-size">${formatSize(file.size)}</span></li>`).join("");
+  });
+
+  $("#submissionForm").addEventListener("submit", event => {
+    event.preventDefault();
+    const university = $("#universityName").value.trim();
+    const title = $("#submissionTitle").value.trim();
+    if (!university || !title) {
+      showToast("Please enter the university name and submission title.");
+      return;
+    }
+
+    const files = Array.from(fileInput.files || []);
+    const record = {
+      id: `SUB-${Date.now().toString(36).toUpperCase()}`,
+      university,
+      title,
+      description: $("#submissionDescription").value.trim(),
+      framework: $("#frameworkName").value,
+      documents: files.map(file => ({ name: file.name, size: file.size, type: file.type })),
+      status: "Pending",
+      createdAt: new Date().toISOString()
+    };
+
+    try {
+      const items = readSubmissions();
+      items.push(record);
+      saveSubmissions(items);
+    } catch {
+      showToast("Unable to save this submission in browser storage. Try fewer or smaller files, then submit again.");
+      return;
+    }
+
+    event.target.reset();
+    selectedFiles.innerHTML = "";
+    navigateTo("dashboard");
+    showToast("Submission saved in this browser. It has not been uploaded to the WURI backend.");
+  });
+
+  $("#signOutButton").addEventListener("click", () => {
+    const dialog = $("#signOutDialog");
+    if (typeof dialog.showModal === "function") dialog.showModal();
+    else showToast("This static prototype has no sign-in session to end.");
+  });
+
+  window.addEventListener("hashchange", () => {
+    const route = location.hash.replace(/^#/, "");
+    navigateTo(pageIds.includes(route) ? route : "dashboard");
+  });
+
+  const initialPage = location.hash.replace(/^#/, "");
+  navigateTo(pageIds.includes(initialPage) ? initialPage : "dashboard");
+})();
+
+  </script>
 </head>
 <body>
   <aside class="sidebar" id="sidebar">
-    <a class="brand" href="#dashboard">
-      <span class="brand-icon">W</span>
-      <span><strong>WURI</strong><small>Ranking Intelligence</small></span>
+    <a class="brand" href="#dashboard" aria-label="Ranking DSS dashboard">
+      <span class="brand-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M12 3.2 15 5l3.4.5.5 3.4 1.8 3.1-1.8 3.1-.5 3.4-3.4.5-3 1.8-3-1.8-3.4-.5-.5-3.4-1.8-3.1 1.8-3.1.5-3.4L9 5l3-1.8Z"/><circle cx="12" cy="10" r="3.1"/><path d="m9.5 13-1 7 3.5-2 3.5 2-1-7"/></svg>
+      </span>
+      <span><strong>Ranking DSS</strong><small>WURI, THE, QS, GreenMetric</small></span>
     </a>
-    <div class="nav-label">WORKSPACE</div>
-    <nav>
-      <a class="nav-link active" href="#dashboard"><span>▦</span> Dashboard</a>
-      <a class="nav-link" href="#institutions"><span>▤</span> Institutions</a>
-      <a class="nav-link" href="#rankings"><span>↕</span> Rankings</a>
-      <a class="nav-link" href="#frameworks"><span>◈</span> Frameworks</a>
-      <a class="nav-link" href="#evidence"><span>▧</span> Evidence Library</a>
-      <a class="nav-link" href="#analytics"><span>▥</span> Analytics</a>
-      <a class="nav-link" href="#research"><span>⌘</span> Research &amp; Validation</a>
-    </nav>
+
+    <div class="nav-scroll">
+      <div class="nav-label">WORKSPACE</div>
+      <nav aria-label="Workspace">
+        <a class="nav-link active" href="#dashboard" data-page="dashboard"><span class="nav-icon">▦</span>Dashboard</a>
+        <a class="nav-link" href="#new-submission" data-page="new-submission"><span class="nav-icon">⇧</span>Document Upload</a>
+        <a class="nav-link" href="#evidence" data-page="evidence"><span class="nav-icon">▧</span>Evidence &amp; EQAM</a>
+        <a class="nav-link" href="#framework-analysis" data-page="framework-analysis"><span class="nav-icon">▥</span>Framework Analysis</a>
+        <a class="nav-link" href="#xai-support" data-page="xai-support"><span class="nav-icon">♧</span>XAI Support</a>
+        <a class="nav-link" href="#rank-history" data-page="rank-history"><span class="nav-icon">♜</span>Rank &amp; History</a>
+      </nav>
+      <div class="nav-label governance-label">GOVERNANCE</div>
+      <nav aria-label="Governance">
+        <a class="nav-link" href="#architecture" data-page="architecture"><span class="nav-icon">⌘</span>Architecture</a>
+        <a class="nav-link" href="#checklist" data-page="checklist"><span class="nav-icon">☷</span>Checklist</a>
+        <a class="nav-link" href="#validation-qa" data-page="validation-qa"><span class="nav-icon">⌕</span>Validation QA</a>
+      </nav>
+    </div>
     <div class="sidebar-bottom">
-      <div class="status-dot"></div>
-      <div><strong>University Ranking DSS</strong><small>Institutional workspace</small></div>
+      <button class="nav-link signout" id="signOutButton" type="button"><span class="nav-icon">⇥</span>Sign Out</button>
     </div>
   </aside>
 
+  <div class="sidebar-scrim" id="sidebarScrim"></div>
   <main class="main">
-    <header class="topbar">
-      <button class="mobile-menu" id="menuToggle" aria-label="Toggle navigation">☰</button>
-      <div class="breadcrumbs">Workspace <span>/</span> <strong id="pageName">Dashboard</strong></div>
-      <div class="top-actions"><span class="avatar">W</span></div>
+    <header class="mobile-topbar">
+      <button class="icon-button mobile-menu" id="menuToggle" type="button" aria-label="Open navigation">☰</button>
+      <span class="mobile-brand">Ranking DSS</span>
     </header>
 
-    <div class="content">
-      <section class="page-section" id="dashboard">
-        <div class="welcome-row">
-          <div><div class="eyebrow">UNIVERSITY RANKING INTELLIGENCE</div><h1>Dashboard Overview</h1>
-          <p class="muted">Institutional performance, ranking readiness, and evidence management.</p></div>
-          <button class="btn btn-primary" data-go="institutions">Manage institutions →</button>
+    <section class="page active-page" id="page-dashboard" data-title="Dashboard">
+      <header class="dashboard-hero">
+        <div>
+          <div class="eyebrow">CLIENT 1</div>
+          <h1>Submission Dashboard</h1>
+          <p>Manage and monitor your university submissions.</p>
         </div>
+        <button class="button button-dark" type="button" data-navigate="new-submission"><span>＋</span> New Submission</button>
+      </header>
 
-        <div class="stats-grid">
-          <article class="stat-card"><div class="stat-heading">Institutions <span>▤</span></div><div class="stat-number" id="institutionCount">—</div><div class="stat-caption">Awaiting connected data</div></article>
-          <article class="stat-card"><div class="stat-heading">Frameworks <span>◈</span></div><div class="stat-number" id="frameworkCount">—</div><div class="stat-caption">Awaiting connected data</div></article>
-          <article class="stat-card"><div class="stat-heading">Evidence records <span>▧</span></div><div class="stat-number" id="evidenceCount">—</div><div class="stat-caption">Awaiting connected data</div></article>
-          <article class="stat-card"><div class="stat-heading">Readiness <span>◷</span></div><div class="stat-number" id="readinessValue">—</div><div class="stat-caption">Not calculated</div></article>
+      <section class="filter-card card">
+        <label for="schoolSearch">School / University</label>
+        <input id="schoolSearch" type="search" placeholder="Enter school / university name" autocomplete="organization">
+        <p class="field-help">Enter a school name to filter submissions.</p>
+      </section>
+
+      <div class="stat-grid" aria-label="Submission summary">
+        <article class="stat-card card"><div class="stat-label">TOTAL SUBMISSIONS</div><div class="stat-value" id="totalCount">0</div></article>
+        <article class="stat-card card"><div class="stat-label">PENDING</div><div class="stat-value orange" id="pendingCount">0</div></article>
+        <article class="stat-card card"><div class="stat-label">UNDER REVIEW</div><div class="stat-value blue" id="reviewCount">0</div></article>
+        <article class="stat-card card"><div class="stat-label">COMPLETED</div><div class="stat-value green" id="completedCount">0</div></article>
+      </div>
+
+      <section class="card submissions-card">
+        <div class="card-heading">
+          <div><h2>Recent Submissions</h2><p>Your latest submissions across all schools.</p></div>
+          <button class="button button-quiet" type="button" data-navigate="rank-history">View All</button>
         </div>
-
-        <div class="dashboard-grid">
-          <article class="panel"><div class="panel-header"><div><h2>Ranking Overview</h2><p class="muted">Institutional ranking results</p></div><a href="#rankings" class="text-link">View rankings →</a></div>
-            <div id="rankingChart" class="empty-state">Ranking data is not available.</div>
-          </article>
-          <article class="panel"><div class="panel-header"><div><h2>Frameworks</h2><p class="muted">Ranking evaluation frameworks</p></div><a href="#frameworks" class="text-link">View frameworks →</a></div>
-            <div id="frameworkSummary" class="empty-state">Framework data is not available.</div>
-          </article>
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th>Submission</th><th>University</th><th>Date</th><th>Documents</th><th>Status</th><th></th></tr></thead>
+            <tbody id="recentRows"></tbody>
+          </table>
         </div>
-
-        <article class="panel table-panel">
-          <div class="panel-header"><div><h2>Institutional Performance</h2><p class="muted">Ranking results from the connected system</p></div></div>
-          <div class="table-wrap"><table><thead><tr><th>Institution</th><th>Framework</th><th>Score</th><th>Status</th><th>Rank</th></tr></thead><tbody id="dashboardRows"><tr><td colspan="5">No institutional records available.</td></tr></tbody></table></div>
-        </article>
+        <div class="empty-state" id="dashboardEmpty">
+          <div class="empty-icon">▤</div>
+          <h3>No submissions found.</h3>
+          <p>Create a new submission to get started.</p>
+          <button class="button button-dark" type="button" data-navigate="new-submission">＋ New Submission</button>
+        </div>
       </section>
+    </section>
 
-      <section class="page-section hidden" id="institutions">
-        <div class="welcome-row"><div><div class="eyebrow">INSTITUTION DIRECTORY</div><h1>Institutions</h1><p class="muted">Institutional records from the connected system.</p></div></div>
-        <article class="panel">
-          <div class="toolbar"><input id="institutionSearch" type="search" placeholder="Search institutions..." aria-label="Search institutions"><select id="frameworkFilter" aria-label="Filter by framework"><option value="">All frameworks</option></select></div>
-          <div class="table-wrap"><table><thead><tr><th>Institution</th><th>Framework</th><th>Score</th><th>Status</th><th>Rank</th></tr></thead><tbody id="institutionRows"><tr><td colspan="5">No institutional records available.</td></tr></tbody></table></div>
-          <p class="muted table-footer" id="resultCount">No records loaded.</p>
-        </article>
-      </section>
+    <section class="page" id="page-new-submission" data-title="Document Upload">
+      <button class="back-link" type="button" data-navigate="dashboard">← Back to Dashboard</button>
+      <div class="page-intro">
+        <div class="eyebrow">CLIENT 1</div>
+        <h1>New Submission</h1>
+        <p>Create a new university submission and attach multiple supporting documents.</p>
+      </div>
+      <form id="submissionForm">
+        <section class="form-card card">
+          <h2>University Information</h2>
+          <div class="form-field">
+            <label for="universityName">University <span class="required">*</span></label>
+            <input id="universityName" name="universityName" required maxlength="180" placeholder="Enter university name" autocomplete="organization">
+            <p class="field-help">Enter the institution name associated with this submission.</p>
+          </div>
+        </section>
+        <section class="form-card card">
+          <h2>Submission Details</h2>
+          <div class="form-field">
+            <label for="submissionTitle">Submission Title <span class="required">*</span></label>
+            <input id="submissionTitle" name="submissionTitle" required maxlength="180" placeholder="Enter submission title">
+          </div>
+          <div class="form-field">
+            <label for="submissionDescription">Description</label>
+            <textarea id="submissionDescription" name="submissionDescription" rows="4" maxlength="2000" placeholder="Add notes or additional information about this submission..."></textarea>
+          </div>
+          <div class="form-field">
+            <label for="frameworkName">Framework</label>
+            <select id="frameworkName" name="frameworkName">
+              <option value="">Select a framework (optional)</option>
+              <option value="WURI">WURI</option>
+              <option value="THE">THE</option>
+              <option value="QS">QS</option>
+              <option value="UI GreenMetric">UI GreenMetric</option>
+              <option value="Other / Not specified">Other / Not specified</option>
+            </select>
+            <p class="field-help">Choose the relevant framework if known. This selection does not calculate an official ranking.</p>
+          </div>
+        </section>
+        <section class="form-card card">
+          <h2>Supporting Documents</h2>
+          <p class="section-help">Attach documents that support the submission. Files are only held in this browser prototype and are not uploaded to a server.</p>
+          <label class="upload-zone" for="supportingFiles" id="uploadZone">
+            <span class="upload-icon">⇧</span>
+            <strong>Choose files to attach</strong>
+            <span>Click to browse. Multiple files are allowed.</span>
+            <input id="supportingFiles" name="supportingFiles" type="file" multiple>
+          </label>
+          <ul class="selected-files" id="selectedFiles" aria-live="polite"></ul>
+        </section>
+        <div class="form-actions">
+          <button class="button button-light" type="button" data-navigate="dashboard">Cancel</button>
+          <button class="button button-dark" type="submit">Create Submission</button>
+        </div>
+      </form>
+    </section>
 
-      <section class="page-section hidden" id="rankings">
-        <div class="eyebrow">PERFORMANCE ANALYSIS</div><h1>Rankings</h1><p class="muted">Ranking results calculated from institutional evidence.</p>
-        <article class="panel"><h2>Ranking comparison</h2><div id="fullRankingChart" class="empty-state">Ranking results are not available.</div></article>
-      </section>
+    <section class="page" id="page-evidence" data-title="Evidence & EQAM">
+      <div class="page-intro page-intro-top"><div class="eyebrow">WORKSPACE</div><h1>Evidence &amp; EQAM</h1><p>Review evidence attached to locally saved submissions.</p></div>
+      <section class="card"><div class="card-heading"><div><h2>Evidence Records</h2><p>Evidence files associated with submissions in this browser.</p></div></div><div id="evidenceContent" class="empty-state compact-empty"></div></section>
+    </section>
 
-      <section class="page-section hidden" id="frameworks">
-        <div class="eyebrow">EVALUATION MODELS</div><h1>Frameworks</h1><p class="muted">Framework definitions from the connected system.</p>
-        <article class="panel"><div id="frameworkList" class="empty-state">No framework records available.</div></article>
-      </section>
+    <section class="page" id="page-framework-analysis" data-title="Framework Analysis">
+      <div class="page-intro page-intro-top"><div class="eyebrow">WORKSPACE</div><h1>Framework Analysis</h1><p>View the framework selected for each submission. No ranking score is generated here.</p></div>
+      <section class="card"><div class="card-heading"><div><h2>Framework Coverage</h2><p>Based only on submissions entered in this browser.</p></div></div><div id="frameworkContent" class="empty-state compact-empty"></div></section>
+    </section>
 
-      <section class="page-section hidden" id="evidence">
-        <div class="eyebrow">DOCUMENTATION</div><h1>Evidence Library</h1><p class="muted">Institutional evidence and supporting documentation.</p>
-        <article class="panel"><h2>Evidence records</h2><div id="evidenceList" class="empty-state">No evidence records loaded. Connect the evidence API to view persisted records.</div></article>
-      </section>
+    <section class="page" id="page-xai-support" data-title="XAI Support">
+      <div class="page-intro page-intro-top"><div class="eyebrow">WORKSPACE</div><h1>XAI Support</h1><p>Explainability support for research workflows.</p></div>
+      <section class="card info-card"><h2>Explainability workspace</h2><p>This frontend does not run AI or generate explainability results. Connect the approved backend service to display actual model explanations and validation outputs.</p></section>
+    </section>
 
-      <section class="page-section hidden" id="analytics">
-        <div class="eyebrow">DATA INSIGHTS</div><h1>Analytics</h1><p class="muted">Institutional performance indicators and ranking analysis.</p>
-        <div class="stats-grid"><article class="stat-card"><div class="stat-heading">Average score</div><div class="stat-number">—</div><div class="stat-caption">Not calculated</div></article><article class="stat-card"><div class="stat-heading">Highest score</div><div class="stat-number">—</div><div class="stat-caption">Not available</div></article><article class="stat-card"><div class="stat-heading">Lowest score</div><div class="stat-number">—</div><div class="stat-caption">Not available</div></article><article class="stat-card"><div class="stat-heading">Records</div><div class="stat-number">—</div><div class="stat-caption">Not loaded</div></article></div>
-        <article class="panel"><h2>Score comparison</h2><div id="analyticsChart" class="empty-state">Analytics require actual ranking data.</div></article>
-      </section>
+    <section class="page" id="page-rank-history" data-title="Rank & History">
+      <div class="page-intro page-intro-top"><div class="eyebrow">WORKSPACE</div><h1>Rank &amp; History</h1><p>Submission history and current workflow status.</p></div>
+      <section class="card submissions-card"><div class="card-heading"><div><h2>Submission History</h2><p>Records created in this browser.</p></div></div><div class="table-scroll"><table><thead><tr><th>Submission</th><th>University</th><th>Framework</th><th>Date</th><th>Documents</th><th>Status</th></tr></thead><tbody id="historyRows"></tbody></table></div><div class="empty-state compact-empty" id="historyEmpty"></div></section>
+    </section>
 
-      <section class="page-section hidden" id="research">
-        <div class="eyebrow">RESEARCH WORKSPACE</div><h1>Research &amp; Validation</h1><p class="muted">Research datasets, validation, and experiment results.</p>
-        <div class="dashboard-grid"><article class="panel"><h2>Dataset management</h2><p class="muted">Dataset records require the research API.</p></article><article class="panel"><h2>Validation experiments</h2><p class="muted">Experiment execution requires the research API.</p></article></div>
-      </section>
+    <section class="page" id="page-architecture" data-title="Architecture">
+      <div class="page-intro page-intro-top"><div class="eyebrow">GOVERNANCE</div><h1>Architecture</h1><p>System components and integration status.</p></div>
+      <section class="card architecture-grid"><article><span class="architecture-number">01</span><h2>Frontend</h2><p>HTML, CSS and JavaScript interface.</p></article><article><span class="architecture-number">02</span><h2>API integration</h2><p>Not connected. Configure and verify the approved backend before enabling server operations.</p></article><article><span class="architecture-number">03</span><h2>Data storage</h2><p>Prototype submissions are stored in this browser only.</p></article></section>
+    </section>
 
-      <footer>WURI University Ranking Decision Support System</footer>
-    </div>
+    <section class="page" id="page-checklist" data-title="Checklist">
+      <div class="page-intro page-intro-top"><div class="eyebrow">GOVERNANCE</div><h1>Readiness Checklist</h1><p>Track the presence of submission information before sending it to the official system.</p></div>
+      <section class="card"><div class="checklist" id="checklistContent"></div></section>
+    </section>
+
+    <section class="page" id="page-validation-qa" data-title="Validation QA">
+      <div class="page-intro page-intro-top"><div class="eyebrow">GOVERNANCE</div><h1>Validation QA</h1><p>Basic completeness checks for locally stored submission records.</p></div>
+      <section class="card"><div id="validationContent" class="empty-state compact-empty"></div></section>
+    </section>
+
+    <footer><span>Ranking DSS</span><span>Institutional submission workspace</span></footer>
   </main>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <dialog class="confirm-dialog" id="signOutDialog">
+    <form method="dialog"><h2>Leave this workspace?</h2><p>This prototype has no sign-in session to end. Your locally saved submissions will remain in this browser.</p><div class="dialog-actions"><button class="button button-light" value="cancel">Cancel</button><button class="button button-dark" value="close">Close dialog</button></div></form>
+  </dialog>
 </body>
 </html>
